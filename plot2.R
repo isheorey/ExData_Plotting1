@@ -1,9 +1,9 @@
-# plot1.R
+# plot2.R
 # 
 # Created:  2014-10-12
 # Author:   Indraneel Sheorey
 # Purpose:  Downloads, unzips, and reads in the "individual household electric
-#           power consumption data set", then saves the required plot 1 to PNG.
+#           power consumption data set", then saves the required plot 2 to PNG.
 
 # Download data
 message("Downloading data...")
@@ -60,9 +60,11 @@ hpc.short$Sub_metering_3 <-
                       hpc.short$Sub_metering_3))
 
 # Plot data
-png(file = "plot1.png", width = 480, height = 480, bg = "transparent")
-hist(hpc.short$Global_active_power,
-     main = "Global Active Power",
-     col = "red",
-     xlab = "Global Active Power (kilowatts)")
+png(file = "plot2.png", width = 480, height = 480, bg = "transparent")
+with(hpc.short,
+     plot(Date.Time,
+          Global_active_power,
+          type = "l",
+          xlab = "",
+          ylab = "Global Active Power (kilowatt)"))
 dev.off()
