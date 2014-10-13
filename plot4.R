@@ -60,17 +60,36 @@ hpc.short$Sub_metering_3 <-
                       hpc.short$Sub_metering_3))
 
 # Plot data
-png(file = "plot3.png", width = 480, height = 480, bg = "transparent")
+png(file = "plot4.png", width = 480, height = 480, bg = "transparent")
+par(mfrow = c(2, 2))
 with(hpc.short,
-     plot(Date.Time,
-          Sub_metering_1,
-          type = "l",
-          xlab = "",
-          ylab = "Energy sub metering"))
-with(hpc.short, lines(Date.Time, Sub_metering_2, col = "red"))
-with(hpc.short, lines(Date.Time, Sub_metering_3, col = "blue"))
-legend("topright",
-       lwd = 1,
-       col = c("black", "red", "blue"),
-       legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+    {
+        plot(Date.Time,
+             Global_active_power,
+             type = "l",
+             xlab = "",
+             ylab = "Global Active Power")
+        plot(Date.Time,
+             Voltage,
+             type = "l",
+             xlab = "datetime",
+             ylab = "Voltage")
+        plot(Date.Time,
+             Sub_metering_1,
+             type = "l",
+             xlab = "",
+             ylab = "Energy sub metering")
+        with(hpc.short, lines(Date.Time, Sub_metering_2, col = "red"))
+        with(hpc.short, lines(Date.Time, Sub_metering_3, col = "blue"))
+        legend("topright",
+               lwd = 1,
+               col = c("black", "red", "blue"),
+               legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"),
+               bty = "n")
+        plot(Date.Time,
+             Global_reactive_power,
+             type = "l",
+             xlab = "datetime",
+             ylab = "Global_reactive_power")
+    })
 dev.off()
