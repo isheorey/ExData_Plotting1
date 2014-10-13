@@ -62,7 +62,9 @@ hpc.short$Sub_metering_3 <-
                       hpc.short$Sub_metering_3))
 
 # Plot data
+png(file = "plot1.png", width = 480, height = 480, bg = "transparent")
 hist(hpc.short$Global_active_power,
      main = "Global Active Power",
      col = "red",
      xlab = "Global Active Power (kilowatts)")
+dev.off()
